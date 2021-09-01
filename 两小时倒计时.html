@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两小时倒计时</title>
+</head>
+<body>
+	<div class="box">
+		<img src="imgsz/0.jpg" alt="" id="img1">
+		<img src="imgsz/0.jpg" alt="" id="img2">
+		<img src="imgsz/10.jpg" alt="" id="point1">
+		<img src="imgsz/0.jpg" alt="" id="img3">
+		<img src="imgsz/0.jpg" alt="" id="img4">
+		<img src="imgsz/10.jpg" alt="" id="point2">
+		<img src="imgsz/0.jpg" alt="" id="img5">
+		<img src="imgsz/0.jpg" alt="" id="img6">
+	</div>
+</body>
+	<script>
+		var arr=[
+			"imgsz/0.jpg",
+			"imgsz/1.jpg",
+			"imgsz/2.jpg",
+			"imgsz/3.jpg",
+			"imgsz/4.jpg",
+			"imgsz/5.jpg",
+			"imgsz/6.jpg",
+			"imgsz/7.jpg",
+			"imgsz/8.jpg",
+			"imgsz/9.jpg",
+			"imgsz/10.jpg"
+		]
+		var img=[
+			document.getElementById("img1"),
+			document.getElementById("img2"),
+			document.getElementById("img3"),
+			document.getElementById("img4"),
+			document.getElementById("img5"),
+			document.getElementById("img6"),
+		]
+		var point1=document.getElementById("point1")
+		var point2=document.getElementById("point2")
+		var tt
+		var s=7200
+
+		function zero(n){
+			return n<10?"0"+n:""+n
+		}
+
+		tt=setInterval(function(){
+			s=s-1
+			if(s==0){
+				clearInterval(tt)
+			}
+			var hr=parseInt(s/3600)
+			var min=parseInt(s%3600/60)
+			var sec=s%60
+			var timeStr=(""+zero(hr)+zero(min)+zero(sec))
+			for(var i=0; i<timeStr.length;i++){
+				img[i].src=arr[timeStr[i]]
+			}
+			
+			console.log(timeStr)
+		},1000)
+		point1.src=arr[10]
+		point2.src=arr[10]
+		
+
+
+
+	</script>
+</html>
